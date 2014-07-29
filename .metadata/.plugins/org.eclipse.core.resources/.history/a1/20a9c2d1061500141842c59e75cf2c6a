@@ -1,0 +1,41 @@
+package com.itheima;
+
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * 编写程序，将指定目录下所有.java文件拷贝到另一个目的中，并将扩展名改为.txt
+ * 
+ * @author one
+ * 
+ */
+
+public class Test9 {
+	public static void main(String[] args) {
+		File dirFrom = new File("C:\\Users\\one\\workspace\\exam\\src\\com\\itheima");
+		
+		File dirTo = new File("D:\\exam");
+		
+		try {
+			System.out.println("Go");
+			func(dirFrom, dirTo);
+			System.out.println("Done");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	private static void func(File dirFrom, File dirTo) throws IOException {
+		File[] files = dirFrom.listFiles();
+		Runtime runtime = Runtime.getRuntime();
+		for (File file : files) {
+			if (file.getName().endsWith(".java")) {
+				File f = new File(dirTo, file.getName().replaceAll("\\.java\\b", ".txt"));
+				runtime.exec("CMD copy /c "+file.getAbsolutePath()+" "+f.getAbsolutePath());
+			}
+		}
+	}
+}

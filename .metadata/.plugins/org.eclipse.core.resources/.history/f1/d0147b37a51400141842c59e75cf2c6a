@@ -1,0 +1,44 @@
+package com.itheima.student.study20;
+
+import java.math.BigInteger;
+
+public class Ffffff {
+	public static void main(String[] args) {
+		func1();
+	}
+
+	private static void func1() {
+		BigInteger num = BigInteger.valueOf(1);
+		for (int i = 1; i < 1001; i++) {
+			num = num.multiply(BigInteger.valueOf(i));
+		}
+		System.out.println(num);
+		
+		int count = 0;
+		char[] b = num.toString().toCharArray();
+		for (int i = b.length-1; i >=0; i++) {
+			count++;
+			System.out.println(b[i]);
+			if (b[i]!='0') {
+				break;
+			}
+			
+		}
+		System.out.println(count);
+	}
+	private static void func() {
+		BigInteger num = BigInteger.valueOf(1);
+		for (int i = 1; i < 1001; i++) {
+			num = num.multiply(BigInteger.valueOf(i));
+		}
+		System.out.println(num);
+		
+		int count = 0;
+		char[] b = num.toString().toCharArray();
+		for (char c : b) {
+			if (c == '0')
+				count++;
+		}
+		System.out.println(count);
+	}
+}

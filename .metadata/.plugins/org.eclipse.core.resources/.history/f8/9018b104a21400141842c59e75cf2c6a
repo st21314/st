@@ -1,0 +1,16 @@
+package com.itheima.student.study20;
+
+import java.math.BigInteger;
+
+public class Ffffff {
+	public static void main(String[] args) {
+		BigInteger num = new BigInteger("1");
+		System.out.println(num);
+		for (int i = 1; i < 1001; i++) {
+
+			num = num.multiply(new BigInteger(i + ""));
+
+		}
+		System.out.println(num);
+	}
+}

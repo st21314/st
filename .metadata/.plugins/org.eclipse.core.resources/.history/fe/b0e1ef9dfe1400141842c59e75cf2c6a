@@ -1,0 +1,43 @@
+package com.itheima;
+
+import java.util.ArrayList;
+
+/**
+ * 第7题：数组去重复，例如: 原始数组是{4,2,4,6,1,2,4,7,8}，得到结果{4,2,6,1,7,8}
+ * 
+ * @author one
+ * 
+ */
+
+public class Test7 {
+	public static void main(String[] args) {
+		int[] arr = {4,2,4,6,1,2,4,7,8};
+		System.out.print("原始数组是：");
+		printArray(arr);
+		int[] newArr = getNewArray(arr);
+		System.out.print("得到结果：");
+		printArray(newArr);
+	}
+
+	private static void printArray(int[] newArr) {
+		System.out.print("{");
+		for (int i = 0; i < newArr.length-1; i++) {
+			System.out.print(newArr[i]+",");
+		}
+		System.out.println(newArr[newArr.length-1]+"}");
+	}
+
+	private static int[] getNewArray(int[] arr) {
+		ArrayList<Integer> a = new ArrayList<Integer>();	// 定义一个ArrayList用于放置去重复后的数字
+		for (int i : arr) {
+			if (!a.contains(i)) {
+				a.add(i);
+			}
+		}
+		int[] newArr = new int[a.size()];
+		for (int i = 0; i < newArr.length; i++) {
+			newArr[i]=a.get(i);
+		}
+		return newArr;
+	}
+}

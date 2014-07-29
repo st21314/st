@@ -1,0 +1,82 @@
+package com.itheima.student.study20;
+
+class ThreadDemo3 extends Thread {
+	private String name;
+	private int delay;
+
+	public ThreadDemo3(String sname, int i_delay) {
+		name = sname;
+		delay = i_delay;
+	}
+
+	public void run() {
+		try {
+			sleep(delay);
+		} catch (InterruptedException e) {
+		}
+		System.out.println("多线程测试！\n" + name + "\n" + delay);
+	}
+}
+
+public class Aaaaa {
+	public static void main(String[] args) {
+		ThreadDemo3 th1, th2, th3;
+		th1 = new ThreadDemo3("线程1", (int) (Math.random() * 900));
+		th2 = new ThreadDemo3("线程2", (int) (Math.random() * 900));
+		th3 = new ThreadDemo3("线程3", (int) (Math.random() * 900));
+		th1.start();
+		th2.start();
+		th3.start();
+	}
+}
+
+class threadDemo {
+	public static void main(String[] args) {
+		Thread t = Thread.currentThread();
+		t.setName("你好吗？");
+		System.out.println("正在进行的Thread是：" + t);
+		try {
+			for (int i = 0; i < 5; i++) {
+				System.out.println("我不是杜兰特" + i);
+				Thread.sleep(3000);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Thread has wrong" + e.getMessage());
+		}
+	}
+}
+
+class threadDemo2 implements Runnable {
+	public threadDemo2() {
+		Thread t1 = Thread.currentThread();
+		t1.setName("第一个主进程");
+		System.out.println("正在运行" + t1);
+		Thread t2 = new Thread(this, "");
+		System.out.println("在创建一个进程");
+		t2.start();
+		try {
+			System.out.println("使他进入第一个睡眠状态");
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			System.out.println("Thread has wrong" + e.getMessage());
+		}
+		System.out.println("退出第一个进程");
+	}
+
+	public void run() {
+		try {
+			for (int i = 0; i < 5; i++) {
+				System.out.println("进程" + i);
+				Thread.sleep(3000);
+			}
+		} catch (InterruptedException e) { // TODO: handle exception
+			System.out.println("Thread has wrong" + e.getMessage());
+		}
+		System.out.println("退出第二个进程");
+	}
+
+	public static void main(String[] args) {
+		new threadDemo2();
+	}
+}

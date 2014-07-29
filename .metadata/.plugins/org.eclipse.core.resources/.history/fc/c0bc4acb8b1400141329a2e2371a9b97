@@ -1,0 +1,13 @@
+package com.itheima.student.study20;
+
+public class Ddddd {
+	 public static void main(String[] args) {
+		int[]  a={9};
+		int[] b = a;
+		a[0] = 7;
+
+		for (int i : b) {
+			System.out.println(i);
+		}
+	}
+}

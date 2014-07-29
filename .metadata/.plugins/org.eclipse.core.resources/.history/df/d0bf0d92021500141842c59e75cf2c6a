@@ -1,0 +1,21 @@
+package com.itheima;
+
+/**
+ * 编写一个可以获取文件扩展名的函数，形参接收一个文件名字符串，返回一个扩展名字符串。
+ * 
+ * @author one
+ * 
+ */
+
+public class Test8 {
+	public static void main(String[] args) {
+		String fileName = "test.next.txt";
+		String extensionName = getExtensionName(fileName);
+		System.out.println(extensionName);
+	}
+
+	private static String getExtensionName(String fileName) {
+		String txt = fileName.replaceAll(".*\\.", "");
+		return txt;
+	}
+}

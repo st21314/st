@@ -1,0 +1,30 @@
+package com.itheima.student.study20;
+
+public class Ccccccc {
+	public static void main(String[] args) {
+		int[][] arr = { { 12, 2, 3, 7 }, { 45, 5, 6 }, { 74, 8, 9, 15 } };
+		m2(arr);
+	}
+
+	private static void m2(int[][] arr) {
+		for (int[] is : arr) {
+			for (int i = 0; i < is.length; i++) {
+				for (int j = i+1; j < is.length; j++) {
+					if (is[j]<is[i]) {
+						swap(is, i, j);
+					}
+				}
+			}
+		}
+		
+		for (int[] is : arr) {
+			System.out.println(is);
+		}
+	}
+
+	private static void swap(int[] is, int i, int j) {
+		int temp = is[i];
+		is[i] = is[j];
+		is[j] = temp;
+	}
+}

@@ -1,0 +1,60 @@
+package com.itheima;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * 编写程序，将指定目录下所有.java文件拷贝到另一个目的中，并将扩展名改为.txt
+ * 
+ * @author one
+ * 
+ */
+
+public class Test9 {
+	public static void main(String[] args) {
+		File dirFrom = new File("D:\\exam");
+		
+		File dirTo = new File("D:\\exam1");
+		
+		try {
+			System.out.println("Go");
+			func(dirFrom, dirTo);
+			System.out.println("Done");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	private static void func(File dirFrom, File dirTo) throws IOException {
+		if (!dirTo.exists()) {
+			dirTo.createNewFile();
+		}
+		BufferedInputStream in = null;
+		BufferedOutputStream out = null;
+		byte[] b = new byte[1024];
+		int len = 0;
+		File[] files = dirFrom.listFiles();
+		for (File file : files) {
+			if (file.isDirectory()) {
+				func(file, dirTo);
+			}
+			if (file.getName().endsWith(".java")) {
+				File f = new File(dirTo, file.getName().replaceAll("\\.java\\b", ".txt"));
+				f.createNewFile();
+				in = new BufferedInputStream(new FileInputStream(file));
+				out = new BufferedOutputStream(new FileOutputStream(f));
+				while((len = in.read(b))!=-1){
+					out.write(b, 0, len);
+				}
+				in.close();
+				out.close();
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+package com.itheima.student.study23;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+public class UDPReceive {
+	public static void main(String[] args) throws Exception {
+		DatagramSocket socket = new DatagramSocket(10000);
+		byte[] buf = new byte[1024];
+		
+		DatagramPacket packet = new DatagramPacket(buf, buf.length);
+		
+		socket.receive(packet);
+		String s = new String(packet.getData(), 0, packet.getLength());
+		
+		System.out.println(s);
+		
+		int port = packet.getPort();
+		
+		System.out.println("IP::"+port);
+		
+		System.out.println(packet.toString());
+		System.out.println(packet.getAddress().getHostAddress());
+		
+		
+		socket.close();
+	}
+}

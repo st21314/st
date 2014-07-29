@@ -1,0 +1,45 @@
+package com.itheima.student.study20;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+
+public class Aaaaa {
+	public static void main(String[] args) {
+		ArrayList<Integer> arr = getArr();
+		Map<Integer, Integer> map = getNums(arr);
+		printIt(map);
+		
+	}
+
+	private static void printIt(Map<Integer, Integer> map) {
+		for (Integer i : map.keySet()) {
+			System.out.println(i+":"+map.get(i));
+		}
+	}
+
+	private static Map<Integer, Integer> getNums(ArrayList<Integer> arr) {
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for (Integer i : arr) {
+			if (map.get(i)==null) {
+				map.put(i, 1);
+			}else {
+				map.replace(i, map.get(i)+1);
+			}
+		}
+		return map;
+	}
+
+	private static ArrayList<Integer> getArr() {
+		ArrayList<Integer> arr;
+		arr = new ArrayList<Integer>();
+		Random random = new Random();
+		for (int i = 0; i < 50; i++) {
+			int j = random.nextInt(41)+10;
+			arr.add(j);
+		}
+		return arr;
+	}
+}

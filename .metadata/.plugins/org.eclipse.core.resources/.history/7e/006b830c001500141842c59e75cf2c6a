@@ -1,0 +1,46 @@
+package com.itheima;
+
+import java.util.ArrayList;
+
+/**
+ * 第7题：数组去重复，例如: 原始数组是{4,2,4,6,1,2,4,7,8}，得到结果{4,2,6,1,7,8}
+ * 
+ * @author one
+ * 
+ */
+
+public class Test7 {
+	public static void main(String[] args) {
+		int[] arr = {4,2,4,6,1,2,4,7,8};
+		
+		System.out.print("原始数组是：");
+		printArray(arr);					// 打印原始数组
+		
+		int[] newArr = getNewArray(arr);	// 去重复，得到新数组
+		
+		System.out.print("得到结果：");
+		printArray(newArr);					// 打印新数组
+	}
+
+	private static int[] getNewArray(int[] arr) {
+		ArrayList<Integer> list = new ArrayList<Integer>();	// 定义一个ArrayList放置去重复后的数字
+		for (int i : arr) {									// 遍历原始数组
+			if (!list.contains(i)) {		// 判断元素如不在ArrayList中则添加进ArrayList
+				list.add(i);
+			}
+		}
+		int[] newArr = new int[list.size()];	// 定义长度为ArrayList元素个数的新数组
+		for (int i = 0; i < newArr.length; i++) {		// 将ArrayList中的元素放进新数组中
+			newArr[i]=list.get(i);
+		}
+		return newArr;		// 返回去重复后的新数组
+	}
+	
+	private static void printArray(int[] arr) {		// 打印数组
+		System.out.print("{");
+		for (int i = 0; i < arr.length-1; i++) {
+			System.out.print(arr[i]+",");
+		}
+		System.out.println(arr[arr.length-1]+"}");
+	}
+}

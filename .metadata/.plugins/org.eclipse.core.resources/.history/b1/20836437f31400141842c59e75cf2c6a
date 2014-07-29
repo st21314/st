@@ -1,0 +1,25 @@
+package com.itheima;
+
+/**
+ * 第5题：在打印语句中如何打印这3个x变量？ class A { int x = 1; class B { int x = 2; void func() {
+ * int x = 3; System.out.println( ? ); } } }
+ * 
+ * @author one
+ * 
+ */
+public class Test5 {
+	int x = 1;
+
+	class B {
+		int x = 2;
+
+		void func() {
+			int x = 3;
+			System.out.println(""+new Test5().x+new Test5().new B().x+x);
+		}
+	}
+
+	public static void main(String[] args) {
+		new Test5().new B().func();
+	}
+}

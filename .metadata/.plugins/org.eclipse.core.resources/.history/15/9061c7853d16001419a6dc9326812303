@@ -1,0 +1,44 @@
+package com.st.one.test;
+
+import java.util.*;
+
+public class Comp {
+	public static void main(String[] args) {
+		String[] souce1 = { "1,zhangsan,28", "2,lisi,35", "3,zhangsan,28",
+				"4,wangwu,35", "5,zhangsan,28", "6,lisi,35", "7,zhaoliu,28",
+				"8,tianqi,35" };
+		String[][] souce = new String[8][3];
+		for (int i = 0; i < souce.length; i++) {
+			souce[i] = souce1[i].split(",");
+		}
+
+		final HashMap<String, Integer> map = new HashMap<String, Integer>();
+		for (String[] strings : souce) {
+			String key = strings[1];
+			if (map.containsKey(key)) {
+				map.put(key, map.get(key) + 1);
+			} else {
+				map.put(key, 1);
+			}
+		}
+
+		Map<String, Integer> age = new TreeMap<String, Integer>(
+				new Comparator<String>() {
+
+					public int compare(String o1, String o2) {
+						Integer i1 = map.get(o1);
+						Integer i2 = map.get(o2);
+						if (i1 != i2) {
+							return i2 - i1;
+						}
+						return o1.compareTo(o2);
+
+					}
+				});
+
+		age.putAll(map);
+
+		System.out.println(age);
+		
+	}
+}

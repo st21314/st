@@ -1,0 +1,68 @@
+package com.st.one.test;
+
+import java.util.*;
+
+public class Comp {
+	public static void main(String[] args) {
+		String[] souce = getSouce();
+		String[] names = getNames(souce);
+
+		final HashMap<String, Integer> times = countTimes(names);
+
+		TreeMap<String, Integer> map = getMap(times);
+
+		System.out.println(map);
+		
+	}
+
+	private static TreeMap<String, Integer> getMap(
+			final HashMap<String, Integer> times) {
+		TreeMap<String, Integer> map = new TreeMap<String, Integer>(
+				new Comparator<String>() {
+
+					public int compare(String o1, String o2) {
+						Integer i1 = times.get(o1);
+						Integer i2 = times.get(o2);
+						if (i1 != i2) {
+							return i2 - i1;
+						}
+						return o1.compareTo(o2);
+
+					}
+				});
+
+		map.putAll(times);
+		return map;
+	}
+
+	private static HashMap<String, Integer> countTimes(String[] names) {
+		final HashMap<String, Integer> times = new HashMap<String, Integer>();
+		for (String name : names) {
+			if (times.containsKey(name)) {
+				times.put(name, times.get(name) + 1);
+			} else {
+				times.put(name, 1);
+			}
+		}
+		return times;
+	}
+
+	private static String[] getNames(String[] souce) {
+		String[] names = new String[8];
+		for (int i = 0; i < names.length; i++) {
+			names[i] = souce[i].replaceAll("[\\d,]", "");
+		}
+		
+		for (String string : names) {
+			System.out.println(string);
+		}
+		return names;
+	}
+
+	private static String[] getSouce() {
+		String[] souce = { "1,zhangsan,28", "2,lisi,35", "3,zhangsan,28",
+				"4,wangwu,35", "5,zhangsan,28", "6,lisi,35", "7,zhaoliu,28",
+				"8,tianqi,35" };
+		return souce;
+	}
+}

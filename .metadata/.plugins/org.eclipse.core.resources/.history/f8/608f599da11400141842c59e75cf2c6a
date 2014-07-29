@@ -1,0 +1,21 @@
+package com.itheima.student.study20;
+
+public class Ffffff {
+	public static void main(String[] args) {
+		long num = 1;
+		for (int i = 1; i < 1001; i++) {
+			switch (i%10) {
+			case 2:
+			case 5:
+			case 0:
+				num*=i;
+				
+				break;
+
+			default:
+				break;
+			}
+		}
+		System.out.println(num);
+	}
+}

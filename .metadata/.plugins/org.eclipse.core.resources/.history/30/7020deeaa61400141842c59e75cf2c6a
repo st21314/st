@@ -1,0 +1,47 @@
+package com.itheima.student.study20;
+
+import java.math.BigInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 求1000！的结果中包含多少个0 1000! = 1×2×3×4×5×...×999×1000
+ */
+
+public class Copy {
+
+	public static void main(String ars[]) {
+		jieCheng(1000);
+	}
+
+	// 将阶乘的数学运算原理封装成对象
+	public static void jieCheng(int number) {
+		// 创建一个大数对象
+		BigInteger res = new BigInteger("1");
+		// 利用循环计算1000!的值
+		for (int i = 1; i <= number; i++) {
+			BigInteger num = new BigInteger(String.valueOf(i));
+			// 相当于res * = num;，但是大数不是基本数据类型，不能使用*运算符，用独有的方法
+			res = res.multiply(num);
+		}
+		// 将获得的值转成字符串
+		String str = res.toString();
+		// 调用方法，获取res中一共有多少个0
+		int zeroNum = zeroNum(str);
+		// 输出结果
+		System.out.println(number + "的阶乘为：" + "\n" + str);
+		System.out.println(number + "的阶乘中所有的0的个数：" + zeroNum);
+	}
+
+	// 求阶乘结果所有的0的个数
+	public static int zeroNum(String str) {
+		int count = 0;
+		String regex = "0";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(str);
+		while (m.find()) {
+			count++;
+		}
+		return count;
+	}
+}

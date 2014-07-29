@@ -1,0 +1,39 @@
+package com.itheima;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ * 第3题：从键盘接受一个数字，打印该数字表示的时间，最大单位到天，例如：
+ * 		键盘输入6，打印6秒；
+ * 		键盘输入60，打印1分；
+ * 		键盘输入66，打印1分6秒；
+ * 		键盘输入666，打印11分6秒；
+ * 		键盘输入3601，打印1小时1秒
+ * 
+ * @author one
+ *
+ */
+public class Test3 {
+	
+	public static void main(String[] args) {
+		
+		int i = getInput();
+	}
+
+	private static int getInput() {
+		int i = -1;
+		Scanner scanner = new Scanner(System.in);
+		while (i==-1){
+			try {
+				System.out.println("请输入秒数：");
+				i = scanner.nextInt();
+			} catch (Exception e) {
+				System.out.println("您可能输入了错误的字符。");
+				scanner.nextLine();
+			}
+		}
+		scanner.close();
+		return i;
+	}
+}

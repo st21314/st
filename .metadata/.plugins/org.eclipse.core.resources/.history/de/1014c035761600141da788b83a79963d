@@ -1,0 +1,14 @@
+package com.itheima;
+
+/**
+ * 第10题：使用TCP协议完成一个客户端一个服务器。客户端从键盘输入读取一个字符串，发送到服务器。
+ * 		服务器接收客户端发送的字符串，反转之后发回客户端。客户端接收并打印。
+ * 
+ * @author one
+ * 
+ */
+public class Test10 {
+	public static void main(String[] args) {
+		
+	}
+}

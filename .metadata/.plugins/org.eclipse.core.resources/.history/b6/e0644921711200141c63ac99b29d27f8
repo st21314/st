@@ -1,0 +1,33 @@
+package com.itheima.student.study20;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+
+public class Aaaaa {
+	public static void main(String[] args) {
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		Random random = new Random();
+		for (int i = 0; i < 50; i++) {
+			arr.add(random.nextInt(41)+10);
+			System.out.print(i+"\t");
+			if (i%10==9) {
+				System.out.println();
+			}
+		}
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for (Integer i : arr) {
+			if (map.get(i)==null) {
+				map.put(i, 1);
+			}else {
+				map.replace(i, map.get(i)+1);
+			}
+		}
+		for (Integer i : map.keySet()) {
+			System.out.println(i+":"+map.get(i));
+		}
+		
+	}
+}

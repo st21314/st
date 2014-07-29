@@ -1,0 +1,32 @@
+package com.itheima.student.study20;
+
+import java.math.BigInteger;
+
+public class Ffffff {
+	public static void main(String[] args) {
+		BigInteger num = new BigInteger("1");
+		System.out.println(num);
+		for (int i = 1; i < 1001; i++) {
+
+			num = num.multiply(new BigInteger(i + ""));
+
+		}
+		System.out.println(num);
+		int count =0;
+		char[] b = num.toString().toCharArray();
+		for (char c : b) {
+
+			if (c==0) {
+				count++;
+			}
+		}
+//		
+//		while(b.length()>0){
+//			if (b.charAt(0)==0) {
+//				count++;
+//				b=b.substring(1);
+//			}
+//		}
+		System.out.println(count);
+	}
+}

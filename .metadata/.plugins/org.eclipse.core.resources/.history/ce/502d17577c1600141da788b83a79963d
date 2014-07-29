@@ -1,0 +1,10 @@
+package com.itheima;
+/**
+ * 第4题：什么情况下适合用UDP协议，什么情况下适合用TCP协议？
+ * 
+ * @author one
+ *
+ */
+public class Test4 {
+
+}

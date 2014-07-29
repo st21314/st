@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;r&apos; in &apos;com.st.Light.main(...)&apos; to &apos;road&apos;&#x0D;&#x0A;- Original project: &apos;Light&apos;&#x0D;&#x0A;- Original element: &apos;com.st.Light.main(String[]).r&apos;&#x0D;&#x0A;- Renamed element: &apos;r&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;r&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.st{Light.java[Light~main~\[QString;@r!258!270!262!262!I!0!false" name="road" references="true" stamp="1403462692708" version="1.0"/>
+</session>

@@ -1,0 +1,27 @@
+package com.itheima.student.study23;
+
+import java.net.InetAddress;
+
+public class IPDemo {
+	public static void main(String[] args) throws Exception {
+		InetAddress address = InetAddress.getLocalHost();
+		System.out.println(address.toString());
+		System.out.println(address);
+		System.out.println(address.getHostName());
+		
+		InetAddress i = InetAddress.getByName("192.168.1.109");
+		print(i);
+		byte[] b = {(byte) 192,(byte) 168,(byte) 204,1};
+		InetAddress i2 = InetAddress.getByAddress(b);
+		print(i2);
+		InetAddress baidu = InetAddress.getByName("www.baidu.com");
+		System.out.println(baidu);
+		print(baidu);
+		
+	}
+
+	private static void print(InetAddress i) {
+		System.out.println(i+"\t"+i.getHostName());
+	}
+
+}

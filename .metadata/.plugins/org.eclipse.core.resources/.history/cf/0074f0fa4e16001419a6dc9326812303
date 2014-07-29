@@ -1,0 +1,62 @@
+package com.itheima.student.study23;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+
+/**
+ * 通过UDP传输方式，将一段文字数据发送出去
+ * 思路：
+ * 	1.建立socket服务
+ * 	2.提供数据，打包
+ * 	3.通过socket服务发送数据包
+ * 	4.关闭资源
+ * @author one
+ *
+ */
+public class UdpDemo {
+	public static void main(String[] args) {
+		try {
+			UdpReceive.receive();
+			UdpSend.send();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+class UdpSend{
+	public static void send() throws Exception {
+		DatagramSocket socket = new DatagramSocket();
+		byte[] buf = "UDP".getBytes();
+		DatagramPacket packet = new DatagramPacket(buf, buf.length, InetAddress.getByName("192.168.1.109"),10000);
+		socket.send(packet);
+		socket.close();
+		
+		
+	}
+}
+class UdpReceive{
+	public static void receive() throws Exception {
+		DatagramSocket socket = new DatagramSocket(10000);
+		byte[] buf = new byte[1024];
+		
+		DatagramPacket packet = new DatagramPacket(buf, buf.length);
+		
+		socket.receive(packet);
+		String s = new String(packet.getData(), 0, packet.getLength());
+		
+		System.out.println(s);
+		
+		int port = packet.getPort();
+		
+		System.out.println("IP::"+port);
+		
+		System.out.println(packet.toString());
+		System.out.println(packet.getAddress().getHostAddress());
+		
+		
+		socket.close();
+	}
+}

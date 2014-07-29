@@ -1,0 +1,71 @@
+package com.itheima.student.study23;
+
+import java.io.*;
+import java.net.*;
+
+public class TcpDemo {
+	public static void main(String[] args) {
+		System.out.println("Go");
+		new Thread(new Server()).start();
+		new Thread(new Client()).start();
+	}
+}
+
+class Client implements Runnable{
+	public static void test() throws Exception{
+		Socket s = new Socket("192.168.1.109", 10086);
+//		InputStream in = s.getInputStream();
+		OutputStream out = s.getOutputStream();
+		out.write("tcp is coming".getBytes());
+		
+		s.close();
+	}
+
+	public void run() {
+		try {
+			Socket s = new Socket("192.168.1.109", 10086);
+			OutputStream out = s.getOutputStream();
+			InputStream in = s.getInputStream();
+			out.write("tcp is coming".getBytes());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			System.out.println("re::"+reader.readLine());
+//			
+			s.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+class Server implements Runnable {
+	public static void test() throws Exception {
+		ServerSocket server = new ServerSocket(10086);
+		Socket s = server.accept();
+		InputStream in = s.getInputStream();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//		System.out.println(reader.readLine());
+		server.close();
+	}
+
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			ServerSocket server = new ServerSocket(10086);
+			Socket s = server.accept();
+			InputStream in = s.getInputStream();
+			OutputStream out = s.getOutputStream();
+			
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			String string = reader.readLine();
+			System.out.println(s.getInetAddress().getHostName()+"::"+string);
+			System.out.println(string);
+			String string2 = new StringBuilder(string).reverse().toString();
+			System.out.println(string2);
+			byte[] bytes = string2.getBytes();
+			out.write(bytes);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

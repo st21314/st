@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void copy(File fileFrom, File fileTo) throws FileNotFoundException, IOException &apos; from &apos;com.itheima.Test9.copyFiles()&apos; to &apos;com.itheima.Test9&apos;&#x0D;&#x0A;- Original project: &apos;exam&apos;&#x0D;&#x0A;- Method name: &apos;copy&apos;&#x0D;&#x0A;- Destination type: &apos;com.itheima.Test9&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;copy&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;com.itheima{Test9.java" name="copy" replace="false" selection="1123 328" stamp="1406577335793" version="1.0" visibility="2"/>
+</session>

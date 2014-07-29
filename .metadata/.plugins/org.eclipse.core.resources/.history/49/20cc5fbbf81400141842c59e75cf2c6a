@@ -1,0 +1,35 @@
+package com.itheima;
+
+/**
+ * 第6题：定义一个包含私有成员变量和函数的类，再定义一个内部类， 在内部类函数中访问外部成员变量，并调用外部函数。
+ * 在外部类函数中创建内部类对象，调用内部类函数。
+ * 
+ * @author one
+ * 
+ */
+public class Test6 { // 定义一个类作为外部类
+	private String nameOuter = "outer"; // 定义外部类私有成员变量
+	private Inner inner;
+
+	private void funcOuter() { 		// 定义外部类函数
+		System.out.println("外部类函数执行");
+		if (inner == null) { 		// 做判断仅第一次运行外部类函数时创建内部类对象，防止死循环
+			System.out.println("创建内部类对象");
+			inner = new Inner(); 	// 在外部类函数中创建内部类对象
+			System.out.println("调用内部类函数");
+			inner.funcInner(); 		// 在外部类函数中调用内部类函数
+		}
+	}
+
+	class Inner { // 定义一个内部类
+		void funcInner() { // 定义内部类函数
+			System.out.println("内部类函数执行");
+			System.out.println("访问外部成员变量：" + nameOuter); // 在内部类函数中访问外部成员变量
+			funcOuter(); // 在内部类函数中调用外部函数
+		}
+	}
+
+	public static void main(String[] args) {
+		new Test6().new Inner().funcInner(); // 调用函数测试结果
+	}
+}

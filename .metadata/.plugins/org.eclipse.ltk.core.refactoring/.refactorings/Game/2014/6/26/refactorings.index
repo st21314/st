@@ -1,0 +1,6 @@
+1403429963815	Rename field 'screenWeight'
+1403431811230	Extract method 'revise'
+1403455023955	Rename field 'cx'
+1403455028650	Rename field 'cy'
+1403455038922	Rename field 'cr'
+1403455775511	Extract method 'move'

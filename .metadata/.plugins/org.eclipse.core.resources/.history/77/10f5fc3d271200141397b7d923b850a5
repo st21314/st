@@ -1,0 +1,83 @@
+package com.itheima.student.study20;
+
+import java.io.*;
+import java.util.*;
+
+/**
+ * 有五个学生，每个学生有3门课的成绩； 从键盘输入以上数据（包括姓名，三门课成绩）； 输入格式：张三，30，40，60 计算出总成绩
+ * 把学生的信息和计算出的总分数高低顺序存放在磁盘文件"stud.txt"中
+ * 
+ * @author one
+ * 
+ */
+
+public class Texting {
+	public static void main(String[] args) {
+
+		System.out.println("hello");
+		try {
+			TreeSet<Student> set = getStudents();
+			out(set);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private static void out(TreeSet<Student> set) throws IOException {
+		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+				System.out));
+		writer.write("name\tChinese\tMath\tEnglish\ttotal");
+writer.newLine();
+		
+		for (Student student : set) {
+			writer.write(student.toString());
+		}
+		writer.close();
+	}
+
+	public static TreeSet<Student> getStudents() throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				System.in));
+
+		TreeSet<Student> students = new TreeSet<Student>();
+
+		String in = null;
+		while (!(in = reader.readLine()).equals("end")) {
+			String[] info = in.split(",");
+			String name = info[0];
+			Student s = new Student(name, Integer.parseInt(info[1]),
+					Integer.parseInt(info[2]), Integer.parseInt(info[3]));
+			students.add(s);
+		}
+
+		return students;
+	}
+
+}
+
+class Student implements Comparable<Student> {
+	String name;
+	int cn, ma, en, sum;
+
+	public Student(String name, int yuwen, int math, int english) {
+		super();
+		this.name = name;
+		this.cn = yuwen;
+		this.ma = math;
+		this.en = english;
+		this.sum = yuwen + math + english;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name + "\t" + cn + "\t" + ma + "\t" + en + "\t" + sum;
+	}
+
+	public int compareTo(Student o) {
+		// TODO Auto-generated method stub
+		return this.sum - o.sum;
+	}
+
+}

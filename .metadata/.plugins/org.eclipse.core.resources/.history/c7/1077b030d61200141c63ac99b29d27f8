@@ -1,0 +1,26 @@
+package com.itheima.student.study20;
+
+import java.util.ArrayList;
+
+public class Bbbbbb {
+	public static void main(String[] args) {
+		ArrayList<Integer> a = new ArrayList<Integer>();
+		for (int i = 1; i <= 10; i++) {
+			a.add(i);
+		}
+		int count = 0;
+		int pos = 0;
+		while (a.size()>1) {
+			count++;
+			if (count == 3) {
+				a.remove(pos);
+			}else {
+				pos++;
+				
+			}
+		}
+		System.out.println(a.get(0));
+	}
+	
+	
+}
